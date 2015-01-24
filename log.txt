@@ -1,1 +1,4 @@
-You log goes in this  file.
+Start: Sat, 24 Jan 2015 12:15
+End:
+Tasks: Created the new repository and imported the master repository
+
