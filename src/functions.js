@@ -33,6 +33,26 @@ var barType = typeof bar;
 */
 
 //your code here
+/*Here we don't immediately return false if the array contains a value that
+cannot be doubled since the function description stipulates that every number
+be doubled. E.g., if we pass the argument foo = [3.5, "goats", 4.6], the result 
+should be foo = [7, "goats", 9.2] and bar = false, not foo = [7, "goats", 4.6]
+and bar = false. At least, that is my interpretation, and why I use a separate
+variable 'success' instead of just returning 'false' as soon as a non-number
+is encountered. */
+bar = function (doubleArray) {
+  var success = true;
+  var i;
+  for (i = 0; i < doubleArray.length; i++) {
+    if (isNaN(doubleArray[i])) {
+      success = false;
+    }
+    else {
+      doubleArray[i] *= 2;
+    }
+  }
+  return success; 
+}
 
 //end your code
 
