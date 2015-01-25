@@ -35,23 +35,25 @@ var barType = typeof bar;
 //your code here
 /*Here we don't immediately return false if the array contains a value that
 cannot be doubled since the function description stipulates that every number
-be doubled. E.g., if we pass the argument foo = [3.5, "goats", 4.6], the result 
+be doubled. E.g., if we pass the argument foo = [3.5, "goats", 4.6], the result
 should be foo = [7, "goats", 9.2] and bar = false, not foo = [7, "goats", 4.6]
 and bar = false. At least, that is my interpretation, and why I use a separate
 variable 'success' instead of just returning 'false' as soon as a non-number
 is encountered. */
-bar = function (doubleArray) {
+
+bar = function(doubleArray) {
   var success = true;
-  var i;
-  for (i = 0; i < doubleArray.length; i++) {
-    if (isNaN(doubleArray[i])) {
-      success = false;
-    } else {
-      doubleArray[i] *= 2;
-    }
+  for (var i = 0; i < doubleArray.length; i++) {
+     if (isNaN(doubleArray[i])) {
+          success = false;
+     }
+
+     else {
+         doubleArray[i] *= 2;
+     }
   }
   return success;
-}
+};
 //end your code
 
 /**
@@ -61,7 +63,7 @@ bar = function (doubleArray) {
 * @property {Date} date - the date of the commit as a JS Date object
 * @property {string} message - the commit message
 */
-function GitLog (hash, date, message) {
+function GitLog(hash, date, message) {
     this.hash = hash;
     this.date = date;
     this.message = message;
@@ -88,34 +90,34 @@ function GitLog (hash, date, message) {
 
 //your code here
 function parseGit(logArray) {
-     var i;          //index for messages in the array of commit messages
-     var j;          //index for characters in each commit message
-     var h;          //index for characters in each commit message
-     newEntry = new GitLog();
+
+     var newEntry;
      var glArray = new Array();
-     
-     for (i = 0; i < logArray.length; i++) {
-          
-          for (j = 0; j < logArray[i].length; j++) {
+
+     for (var i = 0; i < logArray.length; i++) {
+
+          newEntry = new GitLog();
+
+          for (var j = 0; j < logArray[i].length; j++) {
                if (logArray[i][j] == ' ') {
                     newEntry.hash = logArray[i].slice(0, j);
-                    break; 
+                    break;
                }
           }
 
-          for (h = j + 1; h < logArray[i].length; h++) {
+          for (var h = j + 1; h < logArray[i].length; h++) {
                if (logArray[i][h] == '"') {
                     newEntry.date = new Date(logArray[i].slice(j + 1, h - 1));
-                    newEntry.message = logArray[i].slice(h + 1, logArray[i].length - 1);
+                    newEntry.message =
+                         logArray[i].slice(h + 1, logArray[i].length - 1);
                     break;
                }
           }
 
           glArray[i] = newEntry;
-          newEntry = new GitLog(); 
      }
 
-     return glArray; 
+     return glArray;
 }
 
 //end your code

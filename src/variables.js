@@ -15,8 +15,8 @@ function variableModification(a) {
   var yourNumberIs;
   //your code here
   plus5 = a + 5;
-  asString = String(a); 
-  yourNumberIs = "Your Number is " + a;
+  asString = String(a);
+  yourNumberIs = 'Your Number is ' + a;
   //end your code
   return [plus5, asString, yourNumberIs, a];
 }
@@ -31,7 +31,7 @@ false otherwise
 */
 function isString(b) {
   //your code here
-  //Use ===, which will not convert b to a string 
+  //Use ===, which will not convert b to a string
   return (b === String(b));
   //end your code
 }
